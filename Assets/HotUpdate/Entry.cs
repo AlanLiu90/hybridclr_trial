@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MessagePack;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,32 @@ public static class Entry
         Debug.Log("[Entry::Start] 看到这个日志表示你成功运行了热更新代码");
         Run_InstantiateByAddComponent();
         Run_AOTGeneric();
+
+        Test();
+        Test();
+    }
+
+    private static void Test()
+    {
+        float t1, t2;
+
+        t1 = Time.realtimeSinceStartup;
+        GeneratedResolver.Instance.GetFormatterWithVerify<A1>();
+        t2 = Time.realtimeSinceStartup;
+
+        Debug.LogFormat("GetFormatter<A1>: {0:0.000}ms", (t2 - t1) * 1000);
+
+        t1 = Time.realtimeSinceStartup;
+        GeneratedResolver.Instance.GetFormatterWithVerify<A2>();
+        t2 = Time.realtimeSinceStartup;
+
+        Debug.LogFormat("GetFormatter<A2>: {0:0.000}ms", (t2 - t1) * 1000);
+
+        t1 = Time.realtimeSinceStartup;
+        GeneratedResolver.Instance.GetFormatterWithVerify<A3>();
+        t2 = Time.realtimeSinceStartup;
+
+        Debug.LogFormat("GetFormatter<A3>: {0:0.000}ms", (t2 - t1) * 1000);
     }
 
     private static void Run_InstantiateByAddComponent()
