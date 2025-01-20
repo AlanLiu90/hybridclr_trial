@@ -1,3 +1,4 @@
+using MessagePack.Resolvers;
 using System;
 using System.Collections.Generic;
 
@@ -30,23 +31,4 @@ public class GeneratedResolver : global::MessagePack.IFormatterResolver
     }
 }
 
-internal static partial class GeneratedResolverGetFormatterHelper
-{
-    static readonly Dictionary<Type, object> formatterMap = new Dictionary<Type, object>()
-        {
-            {typeof(A1), new A1Formatter()},
-            {typeof(A2), new A2Formatter()},
-            {typeof(A3), new A3Formatter()},
-        };
 
-    internal static object GetFormatter(Type t)
-    {
-        object formatter;
-        if (formatterMap.TryGetValue(t, out formatter))
-        {
-            return formatter;
-        }
-
-        return null;
-    }
-}
